@@ -28,11 +28,16 @@ export default {
 </script>
 
 <template>
-  <div class="bg-zinc-100 w-full-max h-full-max p-32">
-    <ProfileCard class=""/>
-    <div class="grid grid-cols-3 gap-8 px-48 py-12">
-      <ReposCard v-for="repo in publicRepos" :key="repo.name" :nome="repo.name" :linguage="repo.language" :html_url="repo.html_url" :full_name="repo.full_name" />
+  <div class="bg-zinc-100 w-full-max h-full-max md:p-32 p-7">
+    <ProfileCard class="md:px-48 p-8"/>
+    <div class="grid md:grid-cols-3 sm:grid-cols-1 gap-8 md:px-48 py-12">
+      <ReposCard v-for="(repo, index) in publicRepos" :key="repo.name" :nome="repo.name" :linguagem="repo.language" :html_url="repo.html_url" :full_name="repo.full_name" :class="{ 'loading-animation': isLoading }" :style="{ 'animation-delay': index * 0.2 + 's' }" />
+    </div>
+    <div>
+      <h1 class="text-center">Projeto desenvolvido com muito ❤️☕ Por Geordani Machado junto com a Turma de TI do Discord da Ânima Educação</h1>
     </div>
   </div>
 </template>
+
+
 
